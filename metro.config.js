@@ -9,7 +9,7 @@
 
  module.exports = (async () => {
    const {
-     resolver: { assetExts }
+     resolver: { assetExts, sourceExts }
    } = await getDefaultConfig();
  
    return {
@@ -20,9 +20,11 @@
            inlineRequires: true,
          },
        }),
+       babelTransformerPath: require.resolve("react-native-svg-transformer"),
      },
      resolver: {
-       assetExts: [...assetExts, "obj", "mtl", "JPG", "vrx", "hdr", "gltf", "glb", "bin", "arobject", "gif"]
+       assetExts: [...assetExts, "obj", "mtl", "JPG", "vrx", "hdr", "gltf", "glb", "bin", "arobject", "gif"],
+       sourceExts: [...sourceExts, "svg"],
      }
    }
  })();
