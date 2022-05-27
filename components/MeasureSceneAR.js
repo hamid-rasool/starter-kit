@@ -7,6 +7,7 @@ import {
   ViroAnimations,
   ViroPolyline,
   ViroImage,
+  ViroARPlaneSelector,
 } from '@viro-community/react-viro';
 
 import { DistanceContext } from '../context/Distance';
@@ -87,7 +88,11 @@ const MeasureSceneAR = forwardRef((_props, ref) => {
   }));
 
   return (
-    <ViroARScene ref={arSceneRef} onTrackingUpdated={_onTrackingUpdated}>
+    <ViroARScene
+      ref={arSceneRef}
+      onTrackingUpdated={_onTrackingUpdated}
+      onAnchorFound={() => console.log('now found the anchor')}
+    >
       <ViroNode ref={nodeRef1} position={[0, 0, 0]} visible={false} onClick={() => {}}>
         <ViroImage
           width={0.007}
@@ -98,7 +103,7 @@ const MeasureSceneAR = forwardRef((_props, ref) => {
       </ViroNode>
 
       <ViroNode ref={nodeRef2} position={[0, 0, 0]} visible={false} onClick={() => {}}>
-         <ViroImage
+        <ViroImage
           width={0.007}
           height={0.007}
           position={[0, 0, 0]}
